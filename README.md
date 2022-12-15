@@ -1,3 +1,17 @@
 # Winter of Data Science: Reinforcement Learning
 
 This is the code repository for the Winter of Data Science Project on playing games using Reinforcement Learning.
+
+## Tentative Schedule
+
+- Week 0:
+Quick introduction to Python and useful Python modules such as NumPy, MatPlotLib, TensorFlow/PyTorch, etc. Implementing a game of Snake in Python which we'll later use to train our model.
+
+- Weeks 1 and 2:
+Introduction to Reinforcement Learning from Sutton and Barto, and implementation of few basic algorithms. Using these to train an agent to play the game we made.
+
+- Week 3:
+Studying Deep Reinforcement Learning and improving our agaent.
+
+- Weeks 4 and 5:
+Implementing Agents to play Atari games from the paper: Playing Atari with Deep Reinforcement Learning by Mnih, Kavukcuoglu et al and from [the OpenAI Blog](https://openai.com/blog/gym-retro).
