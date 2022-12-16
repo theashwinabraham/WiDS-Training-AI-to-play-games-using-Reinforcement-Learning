@@ -1,12 +1,16 @@
 # Week 1
 
-In this week, we will learn about Python, in particular Python Libraries such an ```NumPy```, ```TensorFlow```, ```PyTorch```, ```MatPlotLib``` and ```SciKit-Learn```.
+In this week, we will learn about Python, in particular Python Libraries such an ```NumPy```, ```TensorFlow```, ```PyTorch```, ```MatPlotLib``` and ```Scikit-Learn```.
 
 ## Assignment 1
 
+### Part I
+
 The notebook ```MNIST.ipynb``` present in this repository contains various from-scratch implementations of common Machine Learning Algorithms.
 
-Your task will be to rewrite each of these using the standard implementations of these algorithms using ```SciKit-Learn```.
+Your task will be to rewrite each of these using the standard implementations of these algorithms using ```Scikit-Learn```.
+
+### Part II
 
 This repository also contains some starter code for creating a window and moving a square around in it. Modify this code to implement a game of [Snake](<https://en.wikipedia.org/wiki/Snake_(video_game_genre)>).
 
