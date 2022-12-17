@@ -1,6 +1,10 @@
 # Winter of Data Science: Reinforcement Learning
 
-This is the code repository for the Winter of Data Science Project on playing games using Reinforcement Learning.
+This is the resources and code repository for the Winter of Data Science Project on playing games using Reinforcement Learning.
+
+## Resources
+
+We will mainly be following Sutton & Barto for the theoretical aspects of Reinforcement Learning and the book Grokking Reinforcement Learning by Miguel Morales for the implementation details.
 
 ## Tentative Schedule
 
