@@ -54,7 +54,7 @@ This algorithm is known as the minimax algorithm since it is usually stated in t
 This causes the min and max to be interchanged in the expression (hence minimax)
 '''
 
-dim = sys.argv[1] if len(sys.argv) > 1 else 3 
+dim = int(sys.argv[1]) if len(sys.argv) > 1 else 3 
 
 def mark(board, i, j, player):
     nboard = copy.deepcopy(board)
@@ -140,7 +140,7 @@ _start = input('Do you wish to start (y/n)? ')
 start = True if _start == 'y' or _start == 'Y' else False
 
 if start:
-    print(' -  -  - \n\n -  -  - \n\n -  -  - \n')
+    print((' - ' * dim + '\n\n')*dim)
     start_pos = eval(input('Enter your move as a tuple: '))
     assert len(start_pos) == 2 and 0 <= start_pos[0] < dim and 0 <= start_pos[1] < dim
     i = start_pos[0]
