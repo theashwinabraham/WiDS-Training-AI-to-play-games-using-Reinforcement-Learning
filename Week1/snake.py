@@ -19,7 +19,7 @@ pygame.init()
 W, H = 800, 600
 screen = pygame.display.set_mode((W, H))
  
-count = 5
+count = 10
 square = [Square(40, 40) for _ in range(count)]
 
 dirn = [0]*count
@@ -49,7 +49,7 @@ while gameOn:
             gameOn = False
     keys = pygame.key.get_pressed()
 
-    print(square[0].pos, square[1].pos, dirn[-5:])
+    print(square[0].pos, dirn[-5:])
 
     for i in range(count):
         square[i].surf.fill((0, 0, 0))
@@ -81,4 +81,10 @@ while gameOn:
     # Update the display using flip
     pygame.display.flip()
 
+    for i in range(1, count):
+        if square[0].pos == square[i].pos:
+            gameOn = False
+            break
+
+pygame.time.wait(1000)
 pygame.quit()
