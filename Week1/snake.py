@@ -40,6 +40,7 @@ pygame.display.flip()
 gameOn = True
 # Our game loop
 while gameOn:
+    square[0].surf.fill((255, 0, 0))
     # for loop through the event queue
     pygame.time.Clock().tick(60)
     pygame.time.wait(100)
@@ -54,6 +55,7 @@ while gameOn:
         square[i].surf.fill((0, 0, 0))
         screen.blit(square[i].surf, tuple(square[i].pos)) # Remove old square[i]
         square[i].surf.fill((0, 200, 255))
+    square[0].surf.fill((255, 0, 0))
 
     if keys[K_w] or keys[K_UP]:
         square[0].pos[1] -= move_size
