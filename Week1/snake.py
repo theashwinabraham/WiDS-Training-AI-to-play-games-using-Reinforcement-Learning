@@ -1,13 +1,17 @@
 import pygame
 from pygame.locals import *
+from random import randint
+
 
 sq_size = 20
+obj_size = 5
 move_size = sq_size*1.5
 
 class Square(pygame.sprite.Sprite):
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, sq_size):
         super(Square, self).__init__()
+        self.size = sq_size
         self.surf = pygame.Surface((sq_size, sq_size))
         self.surf.fill((0, 200, 255))
         # self.rect = self.surf.get_rect()
@@ -20,7 +24,7 @@ W, H = 800, 600
 screen = pygame.display.set_mode((W, H))
  
 count = 10
-square = [Square(40, 40) for _ in range(count)]
+square = [Square(40, 40, sq_size) for _ in range(count)]
 
 dirn = [0]*count
 
@@ -59,13 +63,12 @@ def remove_prev():
 def move_tail():
     for i in range(1, count):
         square[i].pos = [square[i-1].pos[j] + move[dirn[-i]][j] for j in [0, 1]]
+        square[i].pos[0] %= W
+        square[i].pos[1] %= H
 
 def display_all():
     for i in range(count):
         screen.blit(square[i].surf, tuple(square[i].pos)) # Put new square[i]
-    # Update the display using flip
-    pygame.display.flip()
-
 
 def check_crash():
     global gameOn
@@ -74,12 +77,23 @@ def check_crash():
             gameOn = False
             break
 
+def check_touch(a, b):
+    dist = [a.pos[i] - b.pos[i] for i in [0, 1]]
+    max_dist = a.size + b.size
+    return (abs(dist[0]) <= max_dist and abs(dist[1]) <= max_dist)
+
+
 
 # Use blit to put something on the screen
 screen.blit(square[0].surf, tuple(square[0].pos))
 
 # Update the display using flip
 pygame.display.flip()
+
+#temp object
+obj = Square(W/2, H/2, obj_size)
+flag = True
+screen.blit(obj.surf, tuple(obj.pos))
 
 gameOn = True
 # Our game loop
@@ -104,6 +118,18 @@ while gameOn:
     display_all()
     
     check_crash()
+
+    if check_touch(square[0], obj) and flag:
+        obj.surf.fill((0, 0, 0))
+        screen.blit(obj.surf, tuple(obj.pos)) # Remove old obj
+        obj.surf.fill((0, 200, 255))
+        flag = False
+        count += 1
+        square.append(Square(square[-1].pos[0], square[-1].pos[1], sq_size))
+
+
+    # Update the display using flip
+    pygame.display.flip()
 
 pygame.time.wait(1000)
 pygame.quit()
