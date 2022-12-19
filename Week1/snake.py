@@ -13,7 +13,8 @@ class Square(pygame.sprite.Sprite):
 
 pygame.init()
 
-screen = pygame.display.set_mode((800, 600))
+W, H = 800, 600
+screen = pygame.display.set_mode((W, H))
  
 square = Square(40, 40)
 
@@ -33,6 +34,9 @@ while gameOn:
         if event.type == QUIT:
             gameOn = False
     keys = pygame.key.get_pressed()
+
+    print(square.pos)
+
     square.surf.fill((0, 0, 0))
     screen.blit(square.surf, tuple(square.pos)) # Remove old square
     square.surf.fill((0, 200, 255))
@@ -40,18 +44,25 @@ while gameOn:
         square.pos[1] -= 10
         # keys[K_w] = False
         # keys[K_UP] = False
-    if keys[K_a] or keys[K_LEFT]:
+    elif keys[K_a] or keys[K_LEFT]:
         square.pos[0] -= 10
         # keys[K_a] = False
         # keys[K_LEFT] = False
-    if keys[K_s] or keys[K_DOWN]:
+    elif keys[K_s] or keys[K_DOWN]:
         square.pos[1] += 10
         # keys[K_s] = False
         # keys[K_DOWN] = False
-    if keys[K_d] or keys[K_RIGHT]:
+    elif keys[K_d] or keys[K_RIGHT]:
         square.pos[0] += 10
         # keys[K_d] = False
         # keys[K_RIGHT] = False
+
+
+    square.pos[0] %= W
+    square.pos[1] %= H
+   
+
+
     screen.blit(square.surf, tuple(square.pos)) # Put new square
     # Update the display using flip
     pygame.display.flip()
