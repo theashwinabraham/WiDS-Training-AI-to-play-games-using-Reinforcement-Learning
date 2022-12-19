@@ -31,6 +31,50 @@ move = {
     3 : [-move_size, 0]
 }
 
+def move_head():
+    keys = pygame.key.get_pressed()
+    if keys[K_w] or keys[K_UP]:
+        square[0].pos[1] -= move_size
+        dirn.append(0)
+    elif keys[K_a] or keys[K_LEFT]:
+        square[0].pos[0] -= move_size
+        dirn.append(1)
+    elif keys[K_s] or keys[K_DOWN]:
+        square[0].pos[1] += move_size
+        dirn.append(2)
+    elif keys[K_d] or keys[K_RIGHT]:
+        square[0].pos[0] += move_size
+        dirn.append(3)
+
+    square[0].pos[0] %= W
+    square[0].pos[1] %= H
+
+def remove_prev():
+    for i in range(count):
+        square[i].surf.fill((0, 0, 0))
+        screen.blit(square[i].surf, tuple(square[i].pos)) # Remove old square[i]
+        square[i].surf.fill((0, 200, 255))
+    square[0].surf.fill((255, 0, 0))
+
+def move_tail():
+    for i in range(1, count):
+        square[i].pos = [square[i-1].pos[j] + move[dirn[-i]][j] for j in [0, 1]]
+
+def display_all():
+    for i in range(count):
+        screen.blit(square[i].surf, tuple(square[i].pos)) # Put new square[i]
+    # Update the display using flip
+    pygame.display.flip()
+
+
+def check_crash():
+    global gameOn
+    for i in range(1, count):
+        if square[0].pos == square[i].pos:
+            gameOn = False
+            break
+
+
 # Use blit to put something on the screen
 screen.blit(square[0].surf, tuple(square[0].pos))
 
@@ -47,44 +91,19 @@ while gameOn:
     for event in pygame.event.get():
         if event.type == QUIT:
             gameOn = False
-    keys = pygame.key.get_pressed()
+    
 
     print(square[0].pos, dirn[-5:])
 
-    for i in range(count):
-        square[i].surf.fill((0, 0, 0))
-        screen.blit(square[i].surf, tuple(square[i].pos)) # Remove old square[i]
-        square[i].surf.fill((0, 200, 255))
-    square[0].surf.fill((255, 0, 0))
+    remove_prev()
 
-    if keys[K_w] or keys[K_UP]:
-        square[0].pos[1] -= move_size
-        dirn.append(0)
-    elif keys[K_a] or keys[K_LEFT]:
-        square[0].pos[0] -= move_size
-        dirn.append(1)
-    elif keys[K_s] or keys[K_DOWN]:
-        square[0].pos[1] += move_size
-        dirn.append(2)
-    elif keys[K_d] or keys[K_RIGHT]:
-        square[0].pos[0] += move_size
-        dirn.append(3)
+    move_head()
 
-    for i in range(1, count):
-        square[i].pos = [square[i-1].pos[j] + move[dirn[-i]][j] for j in [0, 1]]
+    move_tail()
 
-    for i in range(count):
-        square[i].pos[0] %= W
-        square[i].pos[1] %= H
-        screen.blit(square[i].surf, tuple(square[i].pos)) # Put new square[i]
+    display_all()
     
-    # Update the display using flip
-    pygame.display.flip()
-
-    for i in range(1, count):
-        if square[0].pos == square[i].pos:
-            gameOn = False
-            break
+    check_crash()
 
 pygame.time.wait(1000)
 pygame.quit()
