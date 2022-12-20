@@ -19,7 +19,6 @@ class Square(pygame.sprite.Sprite):
         self.colour = colour
         self.surf = pygame.Surface((sq_size, sq_size))
         self.surf.fill(colour)
-        # self.rect = self.surf.get_rect()
         self.pos = [x, y]
 
 
@@ -29,33 +28,36 @@ W, H = 800, 600
 screen = pygame.display.set_mode((W, H))
 obj = Square(W/2, H/2, obj_size, green)
  
-count = 1
+count = 3
 square = [Square(40, 40, sq_size, cyan) for _ in range(count)]
 
-dirn = []
+dirn = [0]*(count+1)
 
 move = {
-    0 : [0, move_size],
-    1 : [move_size, 0],
-    2 : [0, -move_size],
-    3 : [-move_size, 0]
+    0 : [0, -move_size],
+    1 : [-move_size, 0],
+    2 : [0, move_size],
+    3 : [move_size, 0]
 }
 
 def move_head():
     keys = pygame.key.get_pressed()
     if keys[K_w] or keys[K_UP]:
-        square[0].pos[1] -= move_size
         dirn.append(0)
     elif keys[K_a] or keys[K_LEFT]:
-        square[0].pos[0] -= move_size
         dirn.append(1)
     elif keys[K_s] or keys[K_DOWN]:
-        square[0].pos[1] += move_size
         dirn.append(2)
     elif keys[K_d] or keys[K_RIGHT]:
-        square[0].pos[0] += move_size
         dirn.append(3)
+    else:
+        dirn.append(dirn[-1])
 
+    if abs(dirn[-1] - dirn[-2]) == 2:
+        del dirn[-1]
+
+    square[0].pos = [square[0].pos[j] + move[dirn[-1]][j] for j in [0, 1]]
+        
     square[0].pos[0] %= W
     square[0].pos[1] %= H
 
@@ -68,7 +70,7 @@ def remove_prev():
 
 def move_tail():
     for i in range(1, count):
-        square[i].pos = [square[i-1].pos[j] + move[dirn[-i]][j] for j in [0, 1]]
+        square[i].pos = [square[i-1].pos[j] - move[dirn[-i]][j] for j in [0, 1]]
         square[i].pos[0] %= W
         square[i].pos[1] %= H
 
@@ -117,7 +119,7 @@ while gameOn:
             gameOn = False
     
 
-    print(square[0].pos, obj.pos, dirn[-5:])
+    #print(square[0].pos, obj.pos, dirn[-5:])
 
     remove_prev()
 
@@ -130,7 +132,6 @@ while gameOn:
     check_crash()
 
     if check_touch(square[0], obj):
-        print("OK")
         obj.surf.fill((0, 0, 0))
         screen.blit(obj.surf, tuple(obj.pos)) # Remove old obj
         count += 1
