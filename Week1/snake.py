@@ -7,13 +7,18 @@ sq_size = 20
 obj_size = sq_size*1.0
 move_size = sq_size*1.0
 
+cyan = (0, 200, 255)
+red = (255, 0, 0)
+green = (83, 237, 86)
+
 class Square(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, sq_size):
+    def __init__(self, x, y, sq_size, colour):
         super(Square, self).__init__()
         self.size = sq_size
+        self.colour = colour
         self.surf = pygame.Surface((sq_size, sq_size))
-        self.surf.fill((0, 200, 255))
+        self.surf.fill(colour)
         # self.rect = self.surf.get_rect()
         self.pos = [x, y]
 
@@ -22,12 +27,12 @@ pygame.init()
 
 W, H = 800, 600
 screen = pygame.display.set_mode((W, H))
-obj = Square(W/2, H/2, obj_size)
+obj = Square(W/2, H/2, obj_size, green)
  
-count = 10
-square = [Square(40, 40, sq_size) for _ in range(count)]
+count = 1
+square = [Square(40, 40, sq_size, cyan) for _ in range(count)]
 
-dirn = [0]*count
+dirn = []
 
 move = {
     0 : [0, move_size],
@@ -89,7 +94,7 @@ def gen_obj():
     y = randint(sq_size, H - sq_size)
     y -= y%sq_size
     obj.pos = [x, y]
-    obj.surf.fill((0, 200, 255))
+    obj.surf.fill(green)
     screen.blit(obj.surf, tuple(obj.pos))
 
 # Use blit to put something on the screen
@@ -103,7 +108,7 @@ pygame.display.flip()
 gameOn = True
 # Our game loop
 while gameOn:
-    square[0].surf.fill((255, 0, 0))
+    square[0].surf.fill(red)
     # for loop through the event queue
     pygame.time.Clock().tick(60)
     pygame.time.wait(100)
@@ -125,10 +130,11 @@ while gameOn:
     check_crash()
 
     if check_touch(square[0], obj):
+        print("OK")
         obj.surf.fill((0, 0, 0))
         screen.blit(obj.surf, tuple(obj.pos)) # Remove old obj
         count += 1
-        square.append(Square(square[-1].pos[0], square[-1].pos[1], sq_size))
+        square.append(Square(square[-1].pos[0], square[-1].pos[1], sq_size, cyan))
         gen_obj()
 
 
