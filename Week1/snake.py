@@ -1,8 +1,8 @@
 import pygame
 from pygame.locals import *
 
-class Square(pygame.sprite.Sprite):
 
+class Square(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super(Square, self).__init__()
         self.surf = pygame.Surface((20, 20))
