@@ -9,10 +9,10 @@ x_test_r = x_test.reshape(x_test.shape[0], x_test.shape[1]*x_test.shape[2])
 
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.svm import SVC
 
-clf = make_pipeline(StandardScaler(), LinearDiscriminantAnalysis())
+clf = make_pipeline(StandardScaler(), QuadraticDiscriminantAnalysis())
 clf.fit(x_train_r, y_train)
 
 from sklearn.metrics import accuracy_score

@@ -1,146 +1,128 @@
 import pygame
 from pygame.locals import *
-from random import randint
+from random import randrange
 
 
-sq_size = 20
-obj_size = sq_size*1.0
-move_size = sq_size*1.0
+size = 20
+sep = size
+last_key = 'r'
+n = 3
 
-cyan = (0, 200, 255)
-red = (255, 0, 0)
-green = (83, 237, 86)
+
 
 class Square(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, sq_size, colour):
+    def __init__(self, x, y):
         super(Square, self).__init__()
-        self.size = sq_size
-        self.colour = colour
-        self.surf = pygame.Surface((sq_size, sq_size))
-        self.surf.fill(colour)
+        self.surf = pygame.Surface((size, size))
+        self.surf.fill((0, 200, 255))
+        # self.rect = self.surf.get_rect()
         self.pos = [x, y]
+        self.current_direction = 'r'
+        self.next_direction = None
 
+
+def remove_snake(square):
+    for s in range(len(square)):
+        square[s].surf.fill((0, 0, 0))
+        screen.blit(square[s].surf, tuple(square[s].pos)) # Remove old square
+        if s == 0:
+            square[s].surf.fill((255, 0, 0))
+        else:
+            square[s].surf.fill((0, 200, 255))
+
+def put_snake(square):
+    for s in square:
+        screen.blit(s.surf, tuple(s.pos)) # Put new square
+
+def update_snake(square, last_key):
+
+    square[0].current_direction = last_key
+
+    for i in range(1, len(square)):
+        square[i].next_direction = square[i-1].current_direction
+    
+
+    for s in square:
+        if s.current_direction == 'u':
+            s.pos[1] -= size
+        elif s.current_direction == 'd':
+            s.pos[1] += size
+        elif s.current_direction == 'r':
+            s.pos[0] += size
+        elif s.current_direction == 'l':
+            s.pos[0] -= size
+
+    for i in range(1, len(square)):
+        if square[i].pos[0]%size == 0 or square[i].pos[1]%size == 0:
+            square[i].current_direction = square[i].next_direction
+
+def check_eat(square):
+    global gameOn
+    for i in range(2, len(square)):
+        if (square[0].pos[0] == square[i].pos[0]) and (square[0].pos[1] == square[i].pos[1]):
+            print("now")
+            gameOn = False
+    if square[0].pos[0] == size*-1 or square[0].pos[0] == 800 or square[0].pos[1] == size*-1 or square[0].pos[1] == 600:
+        gameOn = False
+
+def add_tail(square):
+    square.append(Square(square[len(square) - 1].pos[0] - size, square[len(square) - 1].pos[1]))
 
 pygame.init()
 
-W, H = 800, 600
-screen = pygame.display.set_mode((W, H))
-obj = Square(W/2, H/2, obj_size, green)
+screen = pygame.display.set_mode((800, 600))
  
-count = 3
-square = [Square(40, 40, sq_size, cyan) for _ in range(count)]
+square = [Square(size-sep*i, size) for i in range(n)]
+square[0].surf.fill((255, 0, 0))
 
-dirn = [0]*(count+1)
+put_snake(square)
 
-move = {
-    0 : [0, -move_size],
-    1 : [-move_size, 0],
-    2 : [0, move_size],
-    3 : [move_size, 0]
-}
-
-def move_head():
-    keys = pygame.key.get_pressed()
-    if keys[K_w] or keys[K_UP]:
-        dirn.append(0)
-    elif keys[K_a] or keys[K_LEFT]:
-        dirn.append(1)
-    elif keys[K_s] or keys[K_DOWN]:
-        dirn.append(2)
-    elif keys[K_d] or keys[K_RIGHT]:
-        dirn.append(3)
-    else:
-        dirn.append(dirn[-1])
-
-    if abs(dirn[-1] - dirn[-2]) == 2:
-        del dirn[-1]
-
-    square[0].pos = [square[0].pos[j] + move[dirn[-1]][j] for j in [0, 1]]
-        
-    square[0].pos[0] %= W
-    square[0].pos[1] %= H
-
-def remove_prev():
-    for i in range(count):
-        square[i].surf.fill((0, 0, 0))
-        screen.blit(square[i].surf, tuple(square[i].pos)) # Remove old square[i]
-        square[i].surf.fill((0, 200, 255))
-    square[0].surf.fill((255, 0, 0))
-
-def move_tail():
-    for i in range(1, count):
-        square[i].pos = [square[i-1].pos[j] - move[dirn[-i]][j] for j in [0, 1]]
-        square[i].pos[0] %= W
-        square[i].pos[1] %= H
-
-def display_all():
-    for i in range(count):
-        screen.blit(square[i].surf, tuple(square[i].pos)) # Put new square[i]
-
-def check_crash():
-    global gameOn
-    for i in range(1, count):
-        if square[0].pos == square[i].pos:
-            gameOn = False
-            break
-
-def check_touch(a, b):
-    dist = [a.pos[i] - b.pos[i] for i in [0, 1]]
-    err = 1e-3
-    return (abs(dist[0]) < err and abs(dist[1]) < err)
-
-def gen_obj():
-    x = randint(sq_size, W - sq_size)
-    x -= x%sq_size
-    y = randint(sq_size, H - sq_size)
-    y -= y%sq_size
-    obj.pos = [x, y]
-    obj.surf.fill(green)
-    screen.blit(obj.surf, tuple(obj.pos))
-
-# Use blit to put something on the screen
-screen.blit(obj.surf, tuple(obj.pos))
-screen.blit(square[0].surf, tuple(square[0].pos))
-
-# Update the display using flip
 pygame.display.flip()
 
+box = Square(randrange(800/size-size)*size, randrange(600/size-size)*size)
+box.surf.fill((255,255,255))
 
 gameOn = True
-# Our game loop
+
 while gameOn:
-    square[0].surf.fill(red)
+
+
+    if square[0].pos[0] == box.pos[0] and square[0].pos[1] == box.pos[1]:
+        add_tail(square)
+        box.surf.fill((0, 0, 0))
+
+        box.pos[0] = randrange(800/size-size)*size
+        box.pos[1] = randrange(600/size-size)*size
+
+        screen.blit(box.surf, tuple(box.pos))
+        box.surf.fill((255,255,255))
+
+
     # for loop through the event queue
-    pygame.time.Clock().tick(60)
-    pygame.time.wait(100)
+    pygame.time.Clock().tick(10)
     for event in pygame.event.get():
         if event.type == QUIT:
             gameOn = False
+    keys = pygame.key.get_pressed()
+    remove_snake(square)
+    if (keys[K_w] or keys[K_UP]) and last_key != 'd':
+        last_key = 'u'
+    elif keys[K_a] or keys[K_LEFT] and last_key != 'r':
+        last_key = 'l' 
+    elif keys[K_s] or keys[K_DOWN] and last_key != 'u':
+        last_key = 'd'
+    elif keys[K_d] or keys[K_RIGHT] and last_key != 'l':
+        last_key = 'r'
     
-
-    #print(square[0].pos, obj.pos, dirn[-5:])
-
-    remove_prev()
-
-    move_head()
-
-    move_tail()
-
-    display_all()
-    
-    check_crash()
-
-    if check_touch(square[0], obj):
-        obj.surf.fill((0, 0, 0))
-        screen.blit(obj.surf, tuple(obj.pos)) # Remove old obj
-        count += 1
-        square.append(Square(square[-1].pos[0], square[-1].pos[1], sq_size, cyan))
-        gen_obj()
+    update_snake(square, last_key)
+    screen.blit(box.surf, tuple(box.pos))
 
 
-    # Update the display using flip
+    put_snake(square)
+
     pygame.display.flip()
 
-pygame.time.wait(1000)
+    check_eat(square)
+
 pygame.quit()
