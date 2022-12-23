@@ -12,6 +12,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.svm import SVC
 
+
+
 clf = make_pipeline(StandardScaler(), LinearDiscriminantAnalysis())
 clf.fit(x_train_r, y_train)
 
