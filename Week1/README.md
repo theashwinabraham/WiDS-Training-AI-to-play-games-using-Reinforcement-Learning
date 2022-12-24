@@ -1,6 +1,6 @@
 # Week 1
 
-In this week, we will learn about Python, in particular Python Libraries such an ```numpy```, ```tensorflow```, ```pytorch```, ```matplotlib``` and ```scikit-learn```.
+In this week, we will learn about Python, in particular Python Libraries such an ```NumPy```, ```TensorFlow```, ```PyTorch```, ```MatPlotLib``` and ```Scikit-Learn```.
 
 ## Assignment 1
 
@@ -8,9 +8,7 @@ In this week, we will learn about Python, in particular Python Libraries such an
 
 The notebook ```MNIST.ipynb``` present in this repository contains various from-scratch implementations of common Machine Learning Algorithms.
 
-Your task will be to rewrite each of these using the standard implementations of these algorithms using ```scikit-learn```.
-
-Have a look at ```sample.ipynb``` to see a sample solution for the SVM part of ```MNIST.ipynb```.
+Your task will be to rewrite each of these using the standard implementations of these algorithms using ```Scikit-Learn```.
 
 ### Part II
 
