@@ -122,7 +122,7 @@ class State:
     
     def possibilities(self):
         return [(i, j) for i in range(dim) for j in range(dim) if self.board[i][j] == 0]
-    
+
     def __str__(self) -> str:
         s = ''
         for i in range(dim):
