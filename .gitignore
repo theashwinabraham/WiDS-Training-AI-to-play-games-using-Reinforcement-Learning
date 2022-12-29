@@ -3,5 +3,6 @@
 ./**/.vscode
 ./**/*.sublime_workspace
 ./**/*.swp
+./**/__pycache__
 
 !.gitignore
