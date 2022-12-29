@@ -1,5 +1,5 @@
-import numpy as np
 from bandits import Nbandits
+#Import libraries if you need them
 
 class Agent:
     def __init__(self, bandits:Nbandits) -> None:
@@ -19,7 +19,7 @@ class Agent:
     def update(self,choice : int, reward : int) -> None:
         pass
 
-    #dont touch below
+    #dont edit this function
     def act(self) -> int:
         choice = self.action()
         reward = self.bandits.choose(choice)
@@ -34,15 +34,14 @@ class GreedyAgent(Agent):
     def __init__(self, bandits: Nbandits, initialQ : float) -> None:
         super().__init__(bandits)
         #add member variables
-        self.Q = np.full((self.banditN,),initialQ)
+        pass
         
     #implement
     def action(self) -> int:
-        return np.argmax(self.Q)
+        pass
 
     def update(self, choice: int, reward: int) -> None:
-        self.Q[choice] += (reward - self.Q[choice])/self.numiters
-        return 
+        pass
 
 class epsGreedyAgent(Agent):
     def __init__(self, bandits: Nbandits, epsilon : float) -> None:
@@ -95,13 +94,21 @@ class ThompsonSamplerAgent(Agent):
     def update(self, choice: int, reward: int) -> None:
         pass
 
-if __name__=='__main__':
-    import matplotlib.pyplot as plt
+#Implement other subclasses if you want to try other strategies
 
-    Bandits = Nbandits(12)
-    agent = GreedyAgent(Bandits,1)
-    howitgo = [agent.act() for _ in range(150)]
+
+if __name__=='__main__':
+
+    #Determines type of Bandit
+    bandit_type = "Bernoulli"
+    bandit_arms = 10
     
-    plt.plot(howitgo)
-    plt.show()
+    Bandits = Nbandits(bandit_arms, bandit_type)
     
+    #Initialise agent based on strategy
+    agent = None
+    
+    #Train Agent
+    
+    #Get Regret
+    regret = Bandits.get_regret()    
