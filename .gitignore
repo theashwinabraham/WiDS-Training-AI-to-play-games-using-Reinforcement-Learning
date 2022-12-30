@@ -1,0 +1,8 @@
+./**/.DS_Store
+./**/.ipynb_checkpoints
+./**/.vscode
+./**/*.sublime_workspace
+./**/*.swp
+./**/__pycache__
+
+!.gitignore
