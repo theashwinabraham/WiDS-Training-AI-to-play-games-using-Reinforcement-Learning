@@ -15,7 +15,7 @@ The file structure:
 
   * `"Gaussian"` : Returns reward from a Gaussian Distribution with fixed mean (dependent on the arm) and `variance=1`.
 
-    The class `NBandits` also keeps tract of $\text{regret} = k \cdot \text{optimal-reward} - \sum R_t$ which can be accessed at any timestamp using `get_regret()` function.
+    The class `Bandit` also keeps tract of $\text{regret} = k \cdot \text{optimal-reward} - \sum R_t$ which can be accessed at any timestamp using `get_regret()` function.
 
     Note that for Thompson sampling the Beta Distribution (```np.random.beta```) is the conjugate prior for a Bernoulli Distribution.
 
