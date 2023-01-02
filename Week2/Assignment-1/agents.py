@@ -79,7 +79,8 @@ class UCBAAgent(Agent): # DONE
 
     # implement
     def action(self) -> int:
-        WeightArray = [(self.Q_arr[i] + self.c * math.sqrt(math.log(self.numiters + 1)/(self.eachCount[i]+1))) for i in range(self.banditN)]
+        WeightArray = [(self.Q_arr[i] + self.c * np.sqrt(np.log(self.numiters + 1)/(self.eachCount[i]+1))) for i in range(self.banditN)]
+        # print(WeightArray)
         return np.argmax(WeightArray)
 
     # implement
@@ -112,23 +113,24 @@ class GradientBanditAgent(Agent): # DONE
         
 
 class ThompsonSamplerAgent(Agent): # DONE
-    def __init__(self, bandits: Bandit, alpha: float, beta: float) -> None:
+    def __init__(self, bandits: Bandit, sigma0: float, sigma: float, mu0: float) -> None:
         super().__init__(bandits)
-        self.alpha = alpha
-        self.beta = beta
-        self.Q_arr = [0 for _ in range(self.banditN)]
+        self.sigma0 = sigma0
+        self.mu0 = mu0
+        self.armsum = [0 for _ in range(self.banditN)]
+        self.sigma = sigma
         self.eachCount = [0 for _ in range(self.banditN)]
         # add any member variables you may require
 
     # implement 
     def action(self) -> int:
-        samples = np.random.normal(loc=self.Q_arr, scale=np.divide([self.alpha for _ in range(self.banditN)],(np.sqrt(self.eachCount) + self.beta)))
+        samples = np.random.normal(loc=[math.pow((math.pow(self.sigma0, -2) + self.eachCount[i]*math.pow(self.sigma, -2)), -1)*((self.mu0/(self.sigma0*self.sigma0))+(self.armsum[i]/(self.sigma*self.sigma))) for i in range(self.banditN)], scale=[math.pow(math.pow(self.sigma0, -2) + self.eachCount[i]/self.sigma**2, -0.5) for i in range(self.banditN)])
         return np.argmax(samples)
 
 
     # implement
     def update(self, choice: int, reward: int) -> None:
         self.eachCount[choice] += 1
-        self.Q_arr[choice] += (reward - self.Q_arr[choice])/self.eachCount[choice]
+        self.armsum[choice] += reward
 
 # Implement other subclasses if you want to try other strategies
