@@ -131,20 +131,32 @@ class ThompsonSamplerAgent(Agent):
         # Assumption : std deviation = 1
 
         super().__init__(bandits)
-        self.params = np.zeros(self.banditN)
-        self.p_vec = np.zeros(self.banditN) + 1/self.banditN
-        self.std_devs = np.ones(self.banditN)
+        if self.bandit.type == "Bernoulli" :
+            self.alphas = np.zeros(self.banditN) + 1.5
+            self.betas = np.zeros(self.banditN) + 1.5
         
-    
+        else : 
+            self.sigmas = np.full(self.banditN, 1)
+            self.mus = np.zeros(self.banditN)
+
+
     def action(self) -> int:
-        return np.argmax(self.params)
+        if self.bandit.type == "Bernoulli" :
+            rewards = np.random.beta(self.alphas, self.betas)
+            return np.argmax(rewards)
+
+        else : 
+            rewards = np.random.normal(loc = self.mus, scale = self.sigmas)
+            return np.argmax(rewards)
 
     def update(self, choice: int, reward: int) -> None:
-        
-        self.rewards = np.append(self.rewards, reward)
-        self.p_vec[choice] *= np.prod(np.exp(-np.square(self.rewards - self.p_vec[choice])/2))
-        self.p_vec = self.p_vec/(np.sum(self.p_vec) + np.exp(-8))
-        self.params = np.random.normal(loc = self.params, scale = self.std_devs) 
 
-        return 
+        if self.bandit.type == "Bernoulli" :
+            self.alphas[choice] += reward
+            self.betas[choice] += 1- reward        
+            return 
 
+        else : 
+            self.sigmas[choice] = self.sigmas[choice]/np.sqrt(np.square(self.sigmas[choice]) + 1)
+            self.mus[choice] = (reward*np.square(self.sigmas[choice]) + self.mus[choice])/(np.square(self.sigmas[choice]) + 1)
+            return
