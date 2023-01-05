@@ -1,5 +1,9 @@
+# Importing Libraries
+
 from bandits import Bandit
-# Import libraries if you need them
+import numpy as np
+
+# Implementing Classes
 
 class Agent:
     def __init__(self, bandit: Bandit) -> None:
@@ -30,71 +34,117 @@ class Agent:
         return reward
 
 class GreedyAgent(Agent):
-    def __init__(self, bandits: Bandit, initialQ : float) -> None:
+    def __init__(self, bandits: Bandit, initialQ) -> None:
         super().__init__(bandits)
-        # add any member variables you may require
+        self.Qvals = initialQ
+        self.count_actions = np.zeros(self.banditN)
         
-    # implement
     def action(self) -> int:
-        pass
+        a = np.argmax(self.Qvals)
+        return a
 
-    # implement
     def update(self, choice: int, reward: int) -> None:
-        pass
+
+        self.count_actions[choice] += 1
+        self.Qvals[choice] += (reward - self.Qvals[choice])/(self.count_actions[choice])
+        return 
 
 class epsGreedyAgent(Agent):
-    def __init__(self, bandits: Bandit, epsilon : float) -> None:
+    def __init__(self, bandits: Bandit, epsilon : float, initialQ) -> None:
+
         super().__init__(bandits)
         self.epsilon = epsilon
-        # add any member variables you may require
-    
-    # implement
-    def action(self) -> int:
-        pass
+        self.Qvals = initialQ
+        self.count_actions = np.zeros(self.banditN)
 
-    # implement
+    
+    def action(self) -> int:
+        
+        # Greedy action
+        a = np.argmax(self.Qvals)
+        
+        # The probability vector
+        p_values = [self.epsilon/(self.banditN-1)]*self.banditN
+        p_values[a] = 1 - self.epsilon
+
+        # The choice of action using this scheme
+        choice = np.argmax(np.random.multinomial(1, p_values))
+        return choice
+
     def update(self, choice: int, reward: int) -> None:
-        pass
+        
+        self.count_actions[choice] += 1
+        self.Qvals[choice] += (reward - self.Qvals[choice])/(self.count_actions[choice])
+        return 
 
 class UCBAAgent(Agent):
-    def __init__(self, bandits: Bandit, c: float) -> None:
+    def __init__(self, bandits: Bandit, c: float, initialQ) -> None:
         super().__init__(bandits)
         self.c = c
-        # add any member variables you may require
+        self.Qvals = initialQ
+        self.count_actions = np.zeros(self.banditN)
 
-    # implement
     def action(self) -> int:
-        pass
+        
+        if np.min(self.count_actions) == 0 :
+            return np.argmin(self.count_actions)
 
-    # implement
+        # Using UCBA
+        a = np.argmax(self.Qvals + self.c * np.sqrt(self.numiters/self.count_actions))
+        return a
+
     def update(self, choice: int, reward: int) -> None:
-        pass
+        
+        self.count_actions[choice] += 1
+        self.Qvals[choice] += (reward - self.Qvals[choice])/(self.count_actions[choice])
+        return 
 
 class GradientBanditAgent(Agent):
-    def __init__(self, bandits: Bandit, alpha : float) -> None:
+    def __init__(self, bandits: Bandit, alpha : float, initialH) -> None:
         super().__init__(bandits)
         self.alpha = alpha
-        # add any member variables you may require
+        self.H = initialH
+        self.R = 0
+        self.count_actions = np.zeros(self.banditN)
 
-    # implement
     def action(self) -> int:
-        pass
+        
+        p_values = (np.exp(self.H))/np.sum(np.exp(self.H))
+        
+        choice = np.argmax(np.random.multinomial(1, p_values))
+        return choice 
 
-    # implement
     def update(self, choice: int, reward: int) -> None:
-        pass
+        
+        identity = np.zeros(self.banditN)
+        identity[choice] = 1
+
+        policy = np.exp(self.H)/np.sum(np.exp(self.H))
+
+        self.H += self.alpha*(reward - self.R)*(identity - policy)
+        self.R += (reward - self.R)/self.numiters
+
 
 class ThompsonSamplerAgent(Agent):
     def __init__(self, bandits: Bandit) -> None:
+
+        # Assumption : std deviation = 1
+
         super().__init__(bandits)
-        # add any member variables you may require
-
-    # implement
+        self.params = np.zeros(self.banditN)
+        self.p_vec = np.zeros(self.banditN) + 1/self.banditN
+        self.std_devs = np.ones(self.banditN)
+        
+    
     def action(self) -> int:
-        pass
+        return np.argmax(self.params)
 
-    # implement
     def update(self, choice: int, reward: int) -> None:
-        pass
+        
+        self.rewards = np.append(self.rewards, reward)
+        self.p_vec[choice] *= np.prod(np.exp(-np.square(self.rewards - self.p_vec[choice])/2))
+        self.p_vec = self.p_vec/(np.sum(self.p_vec) + np.exp(-8))
+        self.params = np.random.normal(loc = self.params, scale = self.std_devs) 
 
-# Implement other subclasses if you want to try other strategies
+        return 
+
