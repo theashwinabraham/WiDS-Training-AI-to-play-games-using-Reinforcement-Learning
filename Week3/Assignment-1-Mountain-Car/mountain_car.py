@@ -112,7 +112,7 @@ class QAgent:
             eval_env.render() #Renders the environment on a window.
             
             done = terminated or truncated
-            state = next_state
+            eval_state = next_state
           
     def train(self, eval_intervals):
         '''Main function to train the agent'''
