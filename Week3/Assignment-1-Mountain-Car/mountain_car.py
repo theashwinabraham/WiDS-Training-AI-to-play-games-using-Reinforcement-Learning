@@ -1,6 +1,7 @@
 import gymnasium as gym
 import numpy as np
 import matplotlib.pyplot as plt
+import tqdm
 
 '''
 The first task to work with a gym env is to initialise it using gym.make(name_of_env) and reset it using .reset() function. This resets the env to a starting position, with some noise in state. It returns a tuple of the initial state of environment and a dictionary containing info (Not important for the moment).
@@ -142,7 +143,7 @@ class QAgent:
           
     def train(self, eval_intervals):
         '''Main function to train the agent'''
-        for episode in range(1, self.num_train_episodes + 1):
+        for episode in tqdm(range(1, self.num_train_episodes + 1)):
             done = False
             while not done:
                 done = self.env_step()
