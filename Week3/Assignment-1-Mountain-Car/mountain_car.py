@@ -70,6 +70,8 @@ class QAgent:
 
         # this is a trial comment
 
+        # this is another comment
+
         pass
 
     def update(self, state, action, reward, next_state, is_terminal):
