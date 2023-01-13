@@ -98,6 +98,7 @@ class QAgent:
         if is_terminal:
             self.q_table[state[0]][state[1]][action] = 0
         else:
+            print(state[0])
             self.q_table[state[0]][state[1]][action] += self.alpha*(reward + self.gamma*np.maximum(self.q_table[next_state[0]][next_state[1]]) - self.q_table[state[0]][state[1]][action])
     
     def get_action(self):    
