@@ -70,6 +70,24 @@ class QAgent:
 
         x, v = state
 
+        x_step, v_step = [(self.observation_space_high[i] - self.observation_space_low[i])/self.discrete_sizes[i] for i in range(len(state))]
+
+        # len(state) = 2 for this game
+
+        x_ind = 0
+        v_ind = 0
+
+        for i in reversed(range(self.discrete_sizes[0])):
+            if(x >= self.observation_space_low[0] + x_step * i):
+                x_ind = i
+
+        for i in reversed(range(self.discrete_sizes[1])):
+            if(v >= self.observation_space_low[1] + v_step * i):
+                v_ind = i
+
+        return (x_ind, v_ind)
+
+
     def update(self, state, action, reward, next_state, is_terminal):
         '''
         Update the value of q[state, action] in the q-table based on the update rule. 
