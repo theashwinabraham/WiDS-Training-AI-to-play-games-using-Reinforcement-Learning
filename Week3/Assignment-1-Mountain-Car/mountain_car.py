@@ -68,11 +68,7 @@ class QAgent:
         Return a tuple containing the indices along each dimension
         '''
 
-        # this is a trial comment
-
-        # this is another comment
-
-        pass
+        x, v = state
 
     def update(self, state, action, reward, next_state, is_terminal):
         '''
