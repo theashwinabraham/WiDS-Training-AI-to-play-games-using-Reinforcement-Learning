@@ -131,7 +131,7 @@ class QAgent:
         done = False
         eval_state = eval_env.reset()[0]
         while not done:
-            action = None # Take action based on greedy strategy now
+            action = np.argmax(self.q_table[self.get_state_index(self.state)[0]][self.get_state_index(self.state)[1]]) # Take action based on greedy strategy now
             next_state, reward, terminated, truncated, info = eval_env.step(action)
             
             eval_env.render() #Renders the environment on a window.
