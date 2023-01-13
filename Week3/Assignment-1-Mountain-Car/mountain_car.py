@@ -143,7 +143,7 @@ class QAgent:
           
     def train(self, eval_intervals):
         '''Main function to train the agent'''
-        for episode in tqdm(range(1, self.num_train_episodes + 1)):
+        for episode in tqdm.tqdm(range(1, self.num_train_episodes + 1)):
             done = False
             while not done:
                 done = self.env_step()
