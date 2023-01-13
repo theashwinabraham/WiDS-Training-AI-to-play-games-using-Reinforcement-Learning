@@ -1,6 +1,7 @@
 import gymnasium as gym
 import numpy as np
 import matplotlib.pyplot as plt
+import tqdm
 
 '''
 The first task to work with a gym env is to initialise it using gym.make(name_of_env) and reset it using .reset() function. This resets the env to a starting position, with some noise in state. It returns a tuple of the initial state of environment and a dictionary containing info (Not important for the moment).
@@ -94,13 +95,12 @@ class QAgent:
         First discretize both the state and next_state to get indices in q-table.
         The boolean is_terminal here represents whether the state action pair resulted in termination (NOT TRUNCATION) of environment. In this case, update the value by considering max_a' q(s', a,) = 0 (consult theory for why) and not based on q-table.
         '''
-        state0 = self.get_state_index(state)
-        state1 = self.get_state_index(next_state)
-        
+        state_index = self.get_state_index(state)
+        next_state_index = self.get_state_index(next_state)
         if is_terminal:
-            self.q_table[state0[0]][state0[1]][action] = 0
+            self.q_table[state_index[0]][state_index[1]][action] = 0
         else:
-            self.q_table[state0[0]][state0[1]][action] += self.alpha*(reward + self.gamma*np.maximum(self.q_table[state1[0]][state1[1]]) - self.q_table[state0[0]][state0[1]][action])
+            self.q_table[state_index[0]][state_index[1]][action] += self.alpha*(reward + self.gamma*np.max(self.q_table[next_state_index[0]][next_state_index[1]]) - self.q_table[state_index[0]][state_index[1]][action])
     
     def get_action(self):    
         '''
@@ -143,7 +143,7 @@ class QAgent:
           
     def train(self, eval_intervals):
         '''Main function to train the agent'''
-        for episode in range(1, self.num_train_episodes + 1):
+        for episode in tqdm.tqdm(range(1, self.num_train_episodes + 1)):
             done = False
             while not done:
                 done = self.env_step()
