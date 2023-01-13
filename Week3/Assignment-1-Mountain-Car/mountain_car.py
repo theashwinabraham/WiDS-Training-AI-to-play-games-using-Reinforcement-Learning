@@ -81,10 +81,12 @@ class QAgent:
         for i in reversed(range(self.discrete_sizes[0])):
             if(x >= self.observation_space_low[0] + x_step * i):
                 x_ind = i
+                break
 
         for i in reversed(range(self.discrete_sizes[1])):
             if(v >= self.observation_space_low[1] + v_step * i):
                 v_ind = i
+                break
 
         return (x_ind, v_ind)
 
@@ -97,6 +99,7 @@ class QAgent:
         '''
         state_index = self.get_state_index(state)
         next_state_index = self.get_state_index(next_state)
+        
         if is_terminal:
             self.q_table[state_index[0]][state_index[1]][action] = 0
         else:
