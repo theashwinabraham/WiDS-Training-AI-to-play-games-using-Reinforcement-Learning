@@ -96,6 +96,7 @@ class QAgent:
         '''
         state0 = self.get_state_index(state)
         state1 = self.get_state_index(next_state)
+        
         if is_terminal:
             self.q_table[state0[0]][state0[1]][action] = 0
         else:
