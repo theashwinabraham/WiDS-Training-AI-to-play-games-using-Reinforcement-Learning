@@ -89,7 +89,12 @@ class QAgent:
         '''
         Get the action either greedily, or randomly based on epsilon (You may use self.env.action_space.sample() to get a random action). Return an int representing action, based on self.state. Remember to discretize self.state first
         '''
-        pass
+        state_index = self.get_state_index(self.state)
+        if np.random.random()>self.epsilon:
+            return np.argmax(self.q_table[state_index[0]][state_index[1]])
+        else:
+            return self.env.action_space.sample()
+
     
     
     def env_step(self):
