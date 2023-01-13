@@ -68,11 +68,25 @@ class QAgent:
         Return a tuple containing the indices along each dimension
         '''
 
-        # this is a trial comment
+        x, v = state
 
-        # this is another comment
+        x_step, v_step = [(self.observation_space_high[i] - self.observation_space_low[i])/self.discrete_sizes[i] for i in range(len(state))]
 
-        pass
+        # len(state) = 2 for this game
+
+        x_ind = 0
+        v_ind = 0
+
+        for i in reversed(range(self.discrete_sizes[0])):
+            if(x >= self.observation_space_low[0] + x_step * i):
+                x_ind = i
+
+        for i in reversed(range(self.discrete_sizes[1])):
+            if(v >= self.observation_space_low[1] + v_step * i):
+                v_ind = i
+
+        return (x_ind, v_ind)
+
 
     def update(self, state, action, reward, next_state, is_terminal):
         '''
@@ -80,10 +94,11 @@ class QAgent:
         First discretize both the state and next_state to get indices in q-table.
         The boolean is_terminal here represents whether the state action pair resulted in termination (NOT TRUNCATION) of environment. In this case, update the value by considering max_a' q(s', a,) = 0 (consult theory for why) and not based on q-table.
         '''
+        
         if is_terminal:
-            pass
+            self.q_table[state[0]][state[1]][action] = 0
         else:
-            pass
+            self.q_table[state[0]][state[1]][action] += self.alpha*(reward + self.gamma*np.maximum(self.q_table[next_state[0]][next_state[1]]) - self.q_table[state[0]][state[1]][action])
     
     def get_action(self):    
         '''
