@@ -101,7 +101,7 @@ class QAgent:
         next_state_index = self.get_state_index(next_state)
         
         if is_terminal:
-            self.q_table[state_index[0]][state_index[1]][action] = 0
+            self.q_table[state_index[0]][state_index[1]][action] = self.alpha*(reward  - self.q_table[state_index[0]][state_index[1]][action])
         else:
             self.q_table[state_index[0]][state_index[1]][action] += self.alpha*(reward + self.gamma*np.max(self.q_table[next_state_index[0]][next_state_index[1]]) - self.q_table[state_index[0]][state_index[1]][action])
     
@@ -136,7 +136,7 @@ class QAgent:
         done = False
         eval_state = eval_env.reset()[0]
         while not done:
-            action = np.argmax(self.q_table[self.get_state_index(self.state)[0]][self.get_state_index(self.state)[1]]) # Take action based on greedy strategy now
+            action = np.argmax(self.q_table[self.get_state_index(eval_state)[0]][self.get_state_index(eval_state)[1]]) # Take action based on greedy strategy now
             next_state, reward, terminated, truncated, info = eval_env.step(action)
             
             eval_env.render() #Renders the environment on a window.
