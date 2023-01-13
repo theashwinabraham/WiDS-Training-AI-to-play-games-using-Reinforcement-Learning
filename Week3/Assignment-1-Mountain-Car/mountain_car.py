@@ -80,10 +80,11 @@ class QAgent:
         First discretize both the state and next_state to get indices in q-table.
         The boolean is_terminal here represents whether the state action pair resulted in termination (NOT TRUNCATION) of environment. In this case, update the value by considering max_a' q(s', a,) = 0 (consult theory for why) and not based on q-table.
         '''
+        
         if is_terminal:
-            pass
+            self.q_table[state[0]][state[1]][action] = 0
         else:
-            pass
+            self.q_table[state[0]][state[1]][action] += self.alpha*(reward + self.gamma*np.maximum(self.q_table[next_state[0]][next_state[1]]) - self.q_table[state[0]][state[1]][action])
     
     def get_action(self):    
         '''
