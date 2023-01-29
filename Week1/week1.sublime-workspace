@@ -1,0 +1,791 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sq",
+				"sq_size"
+			],
+			[
+				"rand",
+				"randint"
+			],
+			[
+				"Sq",
+				"Square"
+			],
+			[
+				"chec",
+				"check_touch"
+			],
+			[
+				"di",
+				"dist"
+			],
+			[
+				"r",
+				"remove_prev"
+			],
+			[
+				"mo",
+				"move_tail"
+			],
+			[
+				"squ",
+				"square"
+			],
+			[
+				"in",
+				"inp1"
+			],
+			[
+				"ou",
+				"out"
+			],
+			[
+				"o",
+				"out"
+			],
+			[
+				"ch",
+				"check"
+			],
+			[
+				"co",
+				"count"
+			],
+			[
+				"l",
+				"longpal"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"wa",
+				"watch"
+			],
+			[
+				"c",
+				"colour"
+			],
+			[
+				"che",
+				"checkLegalMoveRook"
+			],
+			[
+				"checkLegalMoveKin",
+				"checkLegalMoveKing"
+			],
+			[
+				"fl",
+				"flag"
+			],
+			[
+				"do",
+				"double"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"le",
+				"left_rotate"
+			],
+			[
+				"po",
+				"pow"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"beg",
+				"beginend\t$1.begin(), $1.end()"
+			],
+			[
+				"a",
+				"arr"
+			],
+			[
+				"m",
+				"max"
+			],
+			[
+				"ma",
+				"maxm"
+			],
+			[
+				"class",
+				"class\tclass"
+			],
+			[
+				"dr",
+				"drawtri"
+			],
+			[
+				"pe",
+				"penUp"
+			],
+			[
+				"pen",
+				"penDown"
+			],
+			[
+				"fo",
+				"forward"
+			],
+			[
+				"for",
+				"forward"
+			],
+			[
+				"max",
+				"max_steps"
+			],
+			[
+				"be",
+				"beginend"
+			],
+			[
+				"d",
+				"data"
+			],
+			[
+				"mer",
+				"merge_sort"
+			],
+			[
+				"me",
+				"merge"
+			],
+			[
+				"curr",
+				"curr_channel"
+			],
+			[
+				"chan",
+				"channel_name"
+			],
+			[
+				"gu",
+				"guild_id"
+			],
+			[
+				"gui",
+				"guild_id"
+			],
+			[
+				"cha",
+				"channel"
+			],
+			[
+				"set",
+				"set_curr"
+			],
+			[
+				"cu",
+				"curr_channel"
+			],
+			[
+				"pin",
+				"pin_channel"
+			],
+			[
+				"em",
+				"embed_message"
+			],
+			[
+				"p",
+				"pin_channel"
+			],
+			[
+				"ti",
+				"time1"
+			],
+			[
+				"t",
+				"time1"
+			],
+			[
+				"an",
+				"range"
+			],
+			[
+				"q",
+				"qfreq"
+			],
+			[
+				"sec",
+				"seconds002"
+			],
+			[
+				"minu",
+				"minutes002"
+			],
+			[
+				"impo",
+				"importdata"
+			],
+			[
+				"da",
+				"datatypes"
+			],
+			[
+				"fil",
+				"field_names"
+			],
+			[
+				"fi",
+				"field_names"
+			],
+			[
+				"exep",
+				"exportdatafromtable"
+			],
+			[
+				"ask",
+				"ask_teacher"
+			],
+			[
+				"__",
+				"__name__"
+			],
+			[
+				"im",
+				"insertdatafromcsv"
+			],
+			[
+				"data",
+				"datatype"
+			],
+			[
+				"s",
+				"student_data"
+			],
+			[
+				"f",
+				"fields"
+			],
+			[
+				"pr",
+				"process"
+			],
+			[
+				"empl",
+				"Employee"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "snake.py",
+			"settings":
+			{
+				"buffer_size": 3364,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					1,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAAAiDQAAaW1wb3J0IHB5Z2FtZQpmcm9tIHB5Z2FtZS5sb2NhbHMgaW1wb3J0ICoKZnJvbSByYW5kb20gaW1wb3J0IHJhbmRpbnQKCgpzcV9zaXplID0gMjAKb2JqX3NpemUgPSBzcV9zaXplKjEuMAptb3ZlX3NpemUgPSBzcV9zaXplKjEuMAoKY3lhbiA9ICgwLCAyMDAsIDI1NSkKcmVkID0gKDI1NSwgMCwgMCkKZ3JlZW4gPSAoODMsIDIzNywgODYpCgpjbGFzcyBTcXVhcmUocHlnYW1lLnNwcml0ZS5TcHJpdGUpOgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCB4LCB5LCBzcV9zaXplLCBjb2xvdXIpOgogICAgICAgIHN1cGVyKFNxdWFyZSwgc2VsZikuX19pbml0X18oKQogICAgICAgIHNlbGYuc2l6ZSA9IHNxX3NpemUKICAgICAgICBzZWxmLmNvbG91ciA9IGNvbG91cgogICAgICAgIHNlbGYuc3VyZiA9IHB5Z2FtZS5TdXJmYWNlKChzcV9zaXplLCBzcV9zaXplKSkKICAgICAgICBzZWxmLnN1cmYuZmlsbChjb2xvdXIpCiAgICAgICAgc2VsZi5wb3MgPSBbeCwgeV0KCgpweWdhbWUuaW5pdCgpCgpXLCBIID0gODAwLCA2MDAKc2NyZWVuID0gcHlnYW1lLmRpc3BsYXkuc2V0X21vZGUoKFcsIEgpKQpvYmogPSBTcXVhcmUoVy8yLCBILzIsIG9ial9zaXplLCBncmVlbikKIApjb3VudCA9IDMKc3F1YXJlID0gW1NxdWFyZSg0MCwgNDAsIHNxX3NpemUsIGN5YW4pIGZvciBfIGluIHJhbmdlKGNvdW50KV0KCmRpcm4gPSBbMF0qKGNvdW50KzEpCgptb3ZlID0gewogICAgMCA6IFswLCAtbW92ZV9zaXplXSwKICAgIDEgOiBbLW1vdmVfc2l6ZSwgMF0sCiAgICAyIDogWzAsIG1vdmVfc2l6ZV0sCiAgICAzIDogW21vdmVfc2l6ZSwgMF0KfQoKZGVmIG1vdmVfaGVhZCgpOgogICAga2V5cyA9IHB5Z2FtZS5rZXkuZ2V0X3ByZXNzZWQoKQogICAgaWYga2V5c1tLX3ddIG9yIGtleXNbS19VUF06CiAgICAgICAgZGlybi5hcHBlbmQoMCkKICAgIGVsaWYga2V5c1tLX2FdIG9yIGtleXNbS19MRUZUXToKICAgICAgICBkaXJuLmFwcGVuZCgxKQogICAgZWxpZiBrZXlzW0tfc10gb3Iga2V5c1tLX0RPV05dOgogICAgICAgIGRpcm4uYXBwZW5kKDIpCiAgICBlbGlmIGtleXNbS19kXSBvciBrZXlzW0tfUklHSFRdOgogICAgICAgIGRpcm4uYXBwZW5kKDMpCiAgICBlbHNlOgogICAgICAgIGRpcm4uYXBwZW5kKGRpcm5bLTFdKQoKICAgIGlmIGFicyhkaXJuWy0xXSAtIGRpcm5bLTJdKSA9PSAyOgogICAgICAgIGRlbCBkaXJuWy0xXQoKICAgIHNxdWFyZVswXS5wb3MgPSBbc3F1YXJlWzBdLnBvc1tqXSArIG1vdmVbZGlyblstMV1dW2pdIGZvciBqIGluIFswLCAxXV0KICAgICAgICAKICAgIHNxdWFyZVswXS5wb3NbMF0gJT0gVwogICAgc3F1YXJlWzBdLnBvc1sxXSAlPSBICgpkZWYgcmVtb3ZlX3ByZXYoKToKICAgIGZvciBpIGluIHJhbmdlKGNvdW50KToKICAgICAgICBzcXVhcmVbaV0uc3VyZi5maWxsKCgwLCAwLCAwKSkKICAgICAgICBzY3JlZW4uYmxpdChzcXVhcmVbaV0uc3VyZiwgdHVwbGUoc3F1YXJlW2ldLnBvcykpICMgUmVtb3ZlIG9sZCBzcXVhcmVbaV0KICAgICAgICBzcXVhcmVbaV0uc3VyZi5maWxsKCgwLCAyMDAsIDI1NSkpCiAgICBzcXVhcmVbMF0uc3VyZi5maWxsKCgyNTUsIDAsIDApKQoKZGVmIG1vdmVfdGFpbCgpOgogICAgZm9yIGkgaW4gcmFuZ2UoMSwgY291bnQpOgogICAgICAgIHNxdWFyZVtpXS5wb3MgPSBbc3F1YXJlW2ktMV0ucG9zW2pdIC0gbW92ZVtkaXJuWy1pXV1bal0gZm9yIGogaW4gWzAsIDFdXQogICAgICAgIHNxdWFyZVtpXS5wb3NbMF0gJT0gVwogICAgICAgIHNxdWFyZVtpXS5wb3NbMV0gJT0gSAoKZGVmIGRpc3BsYXlfYWxsKCk6CiAgICBmb3IgaSBpbiByYW5nZShjb3VudCk6CiAgICAgICAgc2NyZWVuLmJsaXQoc3F1YXJlW2ldLnN1cmYsIHR1cGxlKHNxdWFyZVtpXS5wb3MpKSAjIFB1dCBuZXcgc3F1YXJlW2ldCgpkZWYgY2hlY2tfY3Jhc2goKToKICAgIGdsb2JhbCBnYW1lT24KICAgIGZvciBpIGluIHJhbmdlKDEsIGNvdW50KToKICAgICAgICBpZiBzcXVhcmVbMF0ucG9zID09IHNxdWFyZVtpXS5wb3M6CiAgICAgICAgICAgIGdhbWVPbiA9IEZhbHNlCiAgICAgICAgICAgIGJyZWFrCgpkZWYgY2hlY2tfdG91Y2goYSwgYik6CiAgICBkaXN0ID0gW2EucG9zW2ldIC0gYi5wb3NbaV0gZm9yIGkgaW4gWzAsIDFdXQogICAgZXJyID0gMWUtMwogICAgcmV0dXJuIChhYnMoZGlzdFswXSkgPCBlcnIgYW5kIGFicyhkaXN0WzFdKSA8IGVycikKCmRlZiBnZW5fb2JqKCk6CiAgICB4ID0gcmFuZGludChzcV9zaXplLCBXIC0gc3Ffc2l6ZSkKICAgIHggLT0geCVzcV9zaXplCiAgICB5ID0gcmFuZGludChzcV9zaXplLCBIIC0gc3Ffc2l6ZSkKICAgIHkgLT0geSVzcV9zaXplCiAgICBvYmoucG9zID0gW3gsIHldCiAgICBvYmouc3VyZi5maWxsKGdyZWVuKQogICAgc2NyZWVuLmJsaXQob2JqLnN1cmYsIHR1cGxlKG9iai5wb3MpKQoKIyBVc2UgYmxpdCB0byBwdXQgc29tZXRoaW5nIG9uIHRoZSBzY3JlZW4Kc2NyZWVuLmJsaXQob2JqLnN1cmYsIHR1cGxlKG9iai5wb3MpKQpzY3JlZW4uYmxpdChzcXVhcmVbMF0uc3VyZiwgdHVwbGUoc3F1YXJlWzBdLnBvcykpCgojIFVwZGF0ZSB0aGUgZGlzcGxheSB1c2luZyBmbGlwCnB5Z2FtZS5kaXNwbGF5LmZsaXAoKQoKCmdhbWVPbiA9IFRydWUKIyBPdXIgZ2FtZSBsb29wCndoaWxlIGdhbWVPbjoKICAgIHNxdWFyZVswXS5zdXJmLmZpbGwocmVkKQogICAgIyBmb3IgbG9vcCB0aHJvdWdoIHRoZSBldmVudCBxdWV1ZQogICAgcHlnYW1lLnRpbWUuQ2xvY2soKS50aWNrKDYwKQogICAgcHlnYW1lLnRpbWUud2FpdCg1MCkKICAgIGZvciBldmVudCBpbiBweWdhbWUuZXZlbnQuZ2V0KCk6CiAgICAgICAgaWYgZXZlbnQudHlwZSA9PSBRVUlUOgogICAgICAgICAgICBnYW1lT24gPSBGYWxzZQogICAgCgogICAgI3ByaW50KHNxdWFyZVswXS5wb3MsIG9iai5wb3MsIGRpcm5bLTU6XSkKCiAgICByZW1vdmVfcHJldigpCgogICAgbW92ZV9oZWFkKCkKCiAgICBtb3ZlX3RhaWwoKQoKICAgIGRpc3BsYXlfYWxsKCkKICAgIAogICAgY2hlY2tfY3Jhc2goKQoKICAgIGlmIGNoZWNrX3RvdWNoKHNxdWFyZVswXSwgb2JqKToKICAgICAgICBvYmouc3VyZi5maWxsKCgwLCAwLCAwKSkKICAgICAgICBzY3JlZW4uYmxpdChvYmouc3VyZiwgdHVwbGUob2JqLnBvcykpICMgUmVtb3ZlIG9sZCBvYmoKICAgICAgICBjb3VudCArPSAxCiAgICAgICAgc3F1YXJlLmFwcGVuZChTcXVhcmUoc3F1YXJlWy0xXS5wb3NbMF0sIHNxdWFyZVstMV0ucG9zWzFdLCBzcV9zaXplLCBjeWFuKSkKICAgICAgICBnZW5fb2JqKCkKCgogICAgIyBVcGRhdGUgdGhlIGRpc3BsYXkgdXNpbmcgZmxpcAogICAgcHlnYW1lLmRpc3BsYXkuZmxpcCgpCgpweWdhbWUudGltZS53YWl0KDEwMDApCnB5Z2FtZS5xdWl0KCkAAAAAAAAAACQNAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/satyankar/Desktop/WIDS/WiDS-Training-AI-to-play-games-using-Reinforcement-Learning/Week1"
+	],
+	"file_history":
+	[
+		"/Users/satyankar/Desktop/WIDS/WiDS-Training-AI-to-play-games-using-Reinforcement-Learning/Week1/snake.py",
+		"/Users/satyankar/Desktop/WIDS/WiDS-Training-AI-to-play-games-using-Reinforcement-Learning/Week1/test.py",
+		"/Users/satyankar/Desktop/Code/CP/abc282c.cpp",
+		"/Users/satyankar/Desktop/Code/CP/abc282a.py",
+		"/Users/satyankar/Desktop/Code/CP/22DB2.py",
+		"/Users/satyankar/Desktop/Code/CP/22DB1.py",
+		"/Users/satyankar/Desktop/Code/CP/22D1.py",
+		"/Users/satyankar/Desktop/Code/CP/REACHFAST.py",
+		"/Users/satyankar/Desktop/Code/class/test.cpp",
+		"/Users/satyankar/Desktop/Code/class/test.py",
+		"/Users/satyankar/Desktop/Code/CP/a.out",
+		"/Users/satyankar/Desktop/Code/CP/test.py",
+		"/Users/satyankar/Desktop/Code/CP/output.out",
+		"/Users/satyankar/Desktop/Code/CP/input.in",
+		"/Users/satyankar/Desktop/Code/CP/cf2xn.cpp",
+		"/Users/satyankar/Desktop/Code/Other/probability.py",
+		"/Users/satyankar/Desktop/Code/class/findWater.cpp",
+		"/Users/satyankar/Desktop/Code/CP/SUMOFCUBE.py",
+		"/Users/satyankar/Desktop/Code/class/bisection.cpp",
+		"/Users/satyankar/Desktop/Code/class/permutation.cpp",
+		"/Users/satyankar/Desktop/Code/class/decode_message.cpp",
+		"/Users/satyankar/Desktop/Code/CP/POWERSOF10tester.cpp",
+		"/Users/satyankar/Desktop/Code/CP/SUMOFCUBE.cpp",
+		"/Users/satyankar/Desktop/Code/CP/test.cpp",
+		"/Users/satyankar/Desktop/Code/CP/XORMAX.py",
+		"/Users/satyankar/Desktop/Code/CP/DIVISIBLEBY.cpp",
+		"/Users/satyankar/Desktop/Code/CP/GCDSUBARRAYS.py",
+		"/Users/satyankar/Desktop/Code/CP/CC/DIVISIBLEBY.cpp",
+		"/Users/satyankar/Desktop/Code/CP/CC/input.in",
+		"/Users/satyankar/Desktop/Code/CP/CC/CHEFHPAL.py",
+		"/Users/satyankar/Desktop/Code/CP/CC/CHEFHPALbf.py",
+		"/Users/satyankar/Desktop/Code/CP/CC/test.cpp",
+		"/Users/satyankar/Desktop/Code/CP/CC/CHEFHPAL.cpp",
+		"/Users/satyankar/Downloads/CTF/code.py",
+		"/Users/satyankar/Library/Application Support/Sublime Text/Packages/User/cpp.sublime-snippet",
+		"/Users/satyankar/Library/Application Support/Sublime Text/Packages/User/cpp",
+		"/Users/satyankar/Desktop/Code/class/L05_Q04.cpp",
+		"/Users/satyankar/Desktop/Code/class/L05_Q01.cpp",
+		"/Users/satyankar/Desktop/Code/class/L05_Q07.cpp",
+		"/Users/satyankar/Desktop/Code/class/L05_Q02.cpp",
+		"/Users/satyankar/Desktop/Code/class/L05_Q03.cpp",
+		"/Users/satyankar/Desktop/Code/class/L05_Q06.cpp",
+		"/Users/satyankar/Desktop/Code/class/L05_Q05.cpp",
+		"/Users/satyankar/Desktop/Code/CP/CSES/1068.py",
+		"/Users/satyankar/Desktop/Code/class/sinexp.cpp",
+		"/Users/satyankar/Desktop/Code/CP/SPLITPAL.cpp",
+		"/Users/satyankar/Desktop/Code/class/wrappinggift.cpp",
+		"/Users/satyankar/Desktop/Code/class/PaintStars.cpp",
+		"/Users/satyankar/Desktop/Code/CP/test2.py",
+		"/Users/satyankar/Desktop/Code/class/perfectsquare.cpp",
+		"/Users/satyankar/Desktop/Code/class/divisiondilemma.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1760E.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1760G.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1759E.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1760D.py",
+		"/Users/satyankar/Desktop/Code/CP/1760C.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1760B.py",
+		"/Users/satyankar/Desktop/Code/CP/1760A.py",
+		"/Users/satyankar/Desktop/Code/CP/1760C.py",
+		"/Users/satyankar/Desktop/Code/CP/generator.py",
+		"/Users/satyankar/Desktop/Code/CP/1761B.py",
+		"/Users/satyankar/Desktop/Code/CP/1761A.py",
+		"/Users/satyankar/Desktop/Code/class/min_max_med.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1759C.py",
+		"/Users/satyankar/Desktop/Code/class/pytest.py",
+		"/Users/satyankar/Desktop/Code/class/Grade.cpp",
+		"/Users/satyankar/Desktop/Code/class/currency_dispenser.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1759B.py",
+		"/Users/satyankar/Desktop/Code/CP/1759A.py",
+		"/Users/satyankar/Desktop/Code/CP/1759D.cpp",
+		"/Users/satyankar/Desktop/Code/class/func.out",
+		"/Users/satyankar/Desktop/Code/class/function.py",
+		"/Users/satyankar/Desktop/Code/class/newtonrasp.py",
+		"/Users/satyankar/Library/Application Support/Sublime Text/Packages/User/class.sublime-snippet",
+		"/Users/satyankar/Desktop/Code/class/nachos.cpp",
+		"/Users/satyankar/Desktop/Code/class/nearestleapyear.cpp",
+		"/Users/satyankar/Desktop/Code/class/stockPrices.cpp",
+		"/Users/satyankar/Desktop/Code/CP/EQSARRAY.cpp",
+		"/Users/satyankar/Desktop/Code/CP/BIN_OD.cpp",
+		"/Users/satyankar/Desktop/Code/CP/COLORS.cpp",
+		"/Users/satyankar/Desktop/Code/class/Exam_Scores.cpp",
+		"/Users/satyankar/Desktop/Code/class/changecase.cpp",
+		"/Users/satyankar/Desktop/Code/class/quadraticroots.cpp",
+		"/Users/satyankar/Desktop/Code/class/averageOfSeries.cpp",
+		"/Users/satyankar/Desktop/Code/class/areaofcircle.cpp",
+		"/Users/satyankar/Desktop/Code/class/MultiplicationTable.cpp",
+		"/Users/satyankar/Desktop/Code/class/hourglass.cpp",
+		"/Users/satyankar/Documents/Coding Old/kvpy-scrapper/names.txt",
+		"/Users/satyankar/Documents/Coding Old/kvpy-scrapper/code.py",
+		"/Users/satyankar/Documents/Coding Old/kvpy-scrapper/convert.py",
+		"/Users/satyankar/Desktop/Code/CP/DIVIDEMAKEEQ.cpp",
+		"/Users/satyankar/Desktop/Code/CP/RANGEASSIGN.cpp",
+		"/Users/satyankar/Desktop/Code/CP/PRIMEFACDIV.cpp",
+		"/Users/satyankar/Desktop/Code/class/swapSumMod.cpp",
+		"/Users/satyankar/Desktop/Code/class/power.cpp",
+		"/Users/satyankar/Desktop/Code/class/GeometricProgression.cpp",
+		"/Users/satyankar/Desktop/Code/class/simplecpp.cpp",
+		"/Users/satyankar/Desktop/Code/class/grapes.cpp",
+		"/Users/satyankar/Desktop/Code/class/DrawChar6.cpp",
+		"/Users/satyankar/Desktop/Code/class/fact.cpp",
+		"/Users/satyankar/Desktop/Code/class/area.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1744A.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1744D.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1744B.py",
+		"/Users/satyankar/Desktop/Code/class/1744B.py",
+		"/Users/satyankar/Desktop/Code/CP/1742E.cpp",
+		"/Users/satyankar/Desktop/Code/CP/Inc_1742F.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1742F.py",
+		"/Users/satyankar/Desktop/Code/CP/1742D.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1742C.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1742A.cpp",
+		"/Users/satyankar/Desktop/Code/CP/1742B.py",
+		"/Users/satyankar/Desktop/Code/CP/102951B.cpp",
+		"/Users/satyankar/.bash_profile",
+		"/Users/satyankar/Desktop/Code/class/math.cpp",
+		"/Users/satyankar/.zshrc",
+		"/Users/satyankar/Desktop/Code/class/.zshrc",
+		"/Users/satyankar/test.cpp",
+		"/Users/satyankar/Desktop/Code/Question-Extractor2/functions.py",
+		"/Users/satyankar/Desktop/Coding/test.py",
+		"/Users/satyankar/Desktop/add.h",
+		"/Users/satyankar/Desktop/test.cpp",
+		"/Users/satyankar/Desktop/CLRS/2/insertion_sort.py",
+		"/Users/satyankar/Desktop/bot/main copy.py",
+		"/Users/satyankar/Downloads/bot/main copy.py",
+		"/Users/satyankar/Desktop/jee.txt",
+		"/Users/satyankar/Desktop/Coding/check.py",
+		"/Users/satyankar/Desktop/FSD/.gitignore"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"(0, 200, 255)",
+			"i",
+			"max_dist",
+			"< max_dist",
+			">",
+			"<=",
+			"x",
+			"square[i]",
+			"square[0]",
+			"i",
+			"sq_size*0.5",
+			"1.5",
+			"10",
+			"square[0]",
+			"square.",
+			"square",
+			"square3",
+			"square2",
+			"square",
+			"2",
+			"square",
+			"square2",
+			"dirn",
+			"30",
+			"20",
+			"10",
+			"square",
+			"p[",
+			"[",
+			"ar2",
+			"ar1",
+			"g",
+			"G",
+			"g",
+			"G",
+			"5",
+			"x",
+			"long long int",
+			"int",
+			"0",
+			"a",
+			"2",
+			"long long",
+			"0",
+			"--",
+			",",
+			"type, colour",
+			"int",
+			"type",
+			"x1",
+			"1",
+			"x",
+			",",
+			">>",
+			"<=",
+			"1",
+			"h",
+			"r =",
+			"r))",
+			"mularr",
+			"ans",
+			"va",
+			"rep",
+			"n+1",
+			"i",
+			"={0}",
+			"ar",
+			"max",
+			"!",
+			"cout",
+			"20",
+			"0",
+			"2000",
+			">2",
+			"c = ceil(log(m)/log(2))",
+			"m",
+			"4",
+			"float",
+			"1",
+			"60",
+			"bck",
+			"fwd",
+			"gcd",
+			"watch",
+			"long long",
+			"arr[i]",
+			"steps",
+			"low"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "snake.py",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3364,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"rainbow_checked": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 261.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "week1.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"test.py",
+				"CP/test.py"
+			],
+			[
+				"test",
+				"test.py"
+			],
+			[
+				"o",
+				"out.txt"
+			],
+			[
+				"",
+				"main.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 140.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 2
+	}
+}
