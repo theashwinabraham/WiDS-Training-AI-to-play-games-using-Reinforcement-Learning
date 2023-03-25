@@ -1,6 +1,7 @@
 import gymnasium as gym
 import numpy as np
 import matplotlib.pyplot as plt
+import tqdm
 
 '''
 The first task to work with a gym env is to initialise it using gym.make(name_of_env) and reset it using .reset() function. This resets the env to a starting position, with some noise in state. It returns a tuple of the initial state of environment and a dictionary containing info (Not important for the moment).
@@ -67,7 +68,28 @@ class QAgent:
         
         Return a tuple containing the indices along each dimension
         '''
-        pass
+
+        x, v = state
+
+        x_step, v_step = [(self.observation_space_high[i] - self.observation_space_low[i])/self.discrete_sizes[i] for i in range(len(state))]
+
+        # len(state) = 2 for this game
+
+        x_ind = 0
+        v_ind = 0
+
+        for i in reversed(range(self.discrete_sizes[0])):
+            if(x >= self.observation_space_low[0] + x_step * i):
+                x_ind = i
+                break
+
+        for i in reversed(range(self.discrete_sizes[1])):
+            if(v >= self.observation_space_low[1] + v_step * i):
+                v_ind = i
+                break
+
+        return (x_ind, v_ind)
+
 
     def update(self, state, action, reward, next_state, is_terminal):
         '''
@@ -75,16 +97,24 @@ class QAgent:
         First discretize both the state and next_state to get indices in q-table.
         The boolean is_terminal here represents whether the state action pair resulted in termination (NOT TRUNCATION) of environment. In this case, update the value by considering max_a' q(s', a,) = 0 (consult theory for why) and not based on q-table.
         '''
+        state_index = self.get_state_index(state)
+        next_state_index = self.get_state_index(next_state)
+        
         if is_terminal:
-            pass
+            self.q_table[state_index[0]][state_index[1]][action] = self.alpha*(reward  - self.q_table[state_index[0]][state_index[1]][action])
         else:
-            pass
+            self.q_table[state_index[0]][state_index[1]][action] += self.alpha*(reward + self.gamma*np.max(self.q_table[next_state_index[0]][next_state_index[1]]) - self.q_table[state_index[0]][state_index[1]][action])
     
     def get_action(self):    
         '''
         Get the action either greedily, or randomly based on epsilon (You may use self.env.action_space.sample() to get a random action). Return an int representing action, based on self.state. Remember to discretize self.state first
         '''
-        pass
+        state_index = self.get_state_index(self.state)
+        if np.random.random()>self.epsilon:
+            return np.argmax(self.q_table[state_index[0]][state_index[1]])
+        else:
+            return self.env.action_space.sample()
+
     
     
     def env_step(self):
@@ -106,7 +136,7 @@ class QAgent:
         done = False
         eval_state = eval_env.reset()[0]
         while not done:
-            action = None # Take action based on greedy strategy now
+            action = np.argmax(self.q_table[self.get_state_index(eval_state)[0]][self.get_state_index(eval_state)[1]]) # Take action based on greedy strategy now
             next_state, reward, terminated, truncated, info = eval_env.step(action)
             
             eval_env.render() #Renders the environment on a window.
@@ -116,7 +146,7 @@ class QAgent:
           
     def train(self, eval_intervals):
         '''Main function to train the agent'''
-        for episode in range(1, self.num_train_episodes + 1):
+        for episode in tqdm.tqdm(range(1, self.num_train_episodes + 1)):
             done = False
             while not done:
                 done = self.env_step()
